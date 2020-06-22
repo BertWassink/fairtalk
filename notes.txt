@@ -1,0 +1,158 @@
+
+
+
+Ricci dataset
+http://jse.amstat.org/v18n3/RicciData.csv
+paper
+http://jse.amstat.org/v18n3/miao.pdf
+
+
+
+
+https://arxiv.org/pdf/1710.03184.pdf
+
+fairness:
+
+
+		  | Parity 					| Preference
+
+Treatment | Unawareness				| Preferred treatment
+		  | Counterfactual measures	|
+
+Impact	  | Group Fairness 	        | Preferred impact
+          | Individual fairness
+          | Equality of opportunity
+
+
+Unawareness: 
+- A predictor is said to achieve fairness through unawareness if protected attributes are not explicitly used in the prediction process
+However, this idea of “fairness through unawareness” is ineffective due to the existence of redundant encodings,
+ways of predicting protected attributes from other features [4].
+
+Counterfactual fair:
+- This measure deems a predictor to be fair if its output remains the same when the protected attribute is flipped to its counterfactual value
+
+Group fairness 
+- imposes the condition that the predictor should predict a particular outcome for individuals across
+groups with almost equal probability.
+
+Individual fairness
+- similar outputs for similar individuals
+
+Equality of opportunity
+- true positive rate should be the same for all the groups
+
+Preferred treatment
+- A group-conditional predictor is said to satisfy preferred treatment if each group
+of the population receives more benefit from their respec tive predictor then they would have received from any other
+predictor
+
+Preferred impact:
+-  A predictor H is said to have preferred impact as compared to another predictor H′
+if H offers at-least as much benefit as H′ for all the groups.
+
+
+Statistical Parity Difference
+Computed as the difference of the rate of favorable outcomes received by the unprivileged group to the privileged group.
+). A predictor f satisfies statistical parity under a distribution over (X, A, Y )
+if f(X) is independent of the protected attribute A. Since
+f(X) ∈ [0, 1], this is equivalent to P[f(X) ≥ z | A = a] =
+P[f(X) ≥ z] for all a ∈ A and z ∈ [0, 1]
+
+Bounded group loss
+the predictor’s lossremain below some acceptable level for each protected group
+A predictor f satisfies bounded group loss at level ζ under a distribution
+over (X, A, Y ) if E[`(Y, f(X)) | A = a] ≤ ζ for all a ∈ 
+
+Equal Opportunity Difference
+This metric is computed as the difference of true positive rates between the unprivileged and the privileged groups. The true positive rate is the ratio of true positives to the total number of actual positives for a given group.
+
+Average Odds Difference
+Computed as average difference of false positive rate (false positives / negatives) and true positive rate (true positives / positives) between unprivileged and privileged groups.
+
+Disparate Impact
+Computed as the ratio of rate of favorable outcome for the unprivileged group to that of the privileged group.
+
+Theil Index
+Computed as the generalized entropy of benefit for all individuals in the dataset, with alpha = 1. It measures the inequality in benefit allocation for individuals.
+
+
+A Reductions Approach to Fair Classification
+https://arxiv.org/pdf/1803.02453.pdf
+Exp. gradient reduction for fair classificatio
+
+
+Demographic parity: 
+	- P[h(X) = y'| A=a, Y=y] = P[h(X) = y| Y=y] voor alle a, y, y'
+	- P[h(X)| A=a, Y=y] = P[h(X) = y| Y=y] voor alle a, y
+
+
+Equalized odds:
+	-We say that a predictor Yb satisfies equalized odds with respect to
+protected attribute A and outcome Y, if Yb and A are independent conditional on Y.
+	- E[y'| A=a, Y=y] = E[h(X)| Y=y] voor alle a, y, y'
+
+
+Equal probabiliy:
+A possible relaxation of equalized odds is to require non-discrimination only within the “advantaged” outcome group
+Pr{Yb = 1 | A = 0, Y = 1} = Pr{Yb = 1 | A = 1, Y = 1}
+
+Oblivious:
+A property of a predictor Yb or score R is said to be oblivious if it only depends on
+the joint distribution of (Y, A, Yb) or (Y, A, R), respectively.
+
+
+Dealing with fairness:
+- preprocessing
+- training time
+- postprocessing
+
+
+propublica compas
+https://github.com/propublica/compas-analysis/blob/master/Compas%20Analysis.ipynb
+outcomes received by the unprivileged group to the privileged group.
+
+
+wget -O data/ricci.csv  "https://vincentarelbundock.github.io/Rdatasets/csv/Stat2Data/Ricci.csv"
+https://vincentarelbundock.github.io/Rdatasets/csv/Stat2Data/Ricci.csv
+
+
+
+Unawareness
+A situation in which sensitive attributes are present, but not included in the training data. Because sensitive attributes are often correlated with other attributes of one’s data, a model trained with unawareness about a sensitive attribute could still have disparate impact with respect to that attribute, or violate other fairness constraints.
+
+Voorbeeld:
+Voldaan als we nemen niet mee wat de migratie-achtergrond van iemand is, maar dubble straffen uitvoeren in probleemwijken. 
+
+Bezwaar:
+-is ineffective due to the existence of redundant encodings,
+ways of predicting protected attributes from other features
+file:///Users/bertwassink/Downloads/Discrimination-aware_data_mining.pdf
+
+Demographic parity
+A fairness metric that is satisfied if the results of a model's classification are not dependent on a given sensitive attribute.
+
+Voorbeeld:
+Zelfde percentage vrouwen als mannen aangenomen als web developer bij bedrijf X.
+
+Bezwaar:
+Demographic Parity states that the proportion of each segment of a protected class (e.g. gender) should receive the positive outcome at equal rates.
+- The notion permits that we accept the qualified applicants in one demographic, but random individuals in another, so long as the percentages of acceptance match. This behavior can arise naturally, when there is little or no training data available for one of the demographics.
+- Demographic parity often cripples the utility that we might hope to achieve, especially in the common scenario in which an outcome to be predicated, e.g. whether the loan be will defaulted, is correlated with the protected attribute.
+
+Demographic parity would not allow the ideal prediction, namely giving
+loans exactly to those who won’t default. As a result, the loss in utility of introducing demographic parity can be substantial.
+
+Equalized odds:
+
+We say that a predictor Yb satisfies equalized odds with respect to
+protected attribute A and outcome Y, if Y' and A are independent conditional on Y.
+	- E[y'| A=a, Y=y] = E[h(X)| Y=y] voor alle a, y, y'
+
+
+Equal opportunity:
+
+
+
+
+

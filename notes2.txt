@@ -1,0 +1,123 @@
+
+image fairness
+
+examples of fairness
+
+
+Unawareness examples
+
+"Colleges consider the unthinkable: Dropping SAT and ACT requirements for next year's applicants"
+https://edition.cnn.com/2020/04/14/us/coronavirus-colleges-sat-act-test-trnd/index.html
+inkomen ouders
+
+"VVD: criminaliteit in probleemwijken dubbel zo hard bestraffen"
+https://www.ad.nl/politiek/vvd-criminaliteit-in-probleemwijken-dubbel-zo-hard-bestraffen~a8839594/
+afkomst inwoners
+
+"How Obamacare changed maternity coverage"
+https://www.healthinsurance.org/obamacare/how-obamacare-changed-maternity-coverage/
+vrouwen kunnen zwanger raken
+
+Unawareness:
+- A predictor is said to achieve fairness through unawareness if protected attributes are not explicitly used in the prediction process
+However, this idea of “fairness through unawareness” is ineffective due to the existence of redundant encodings,
+ways of predicting protected attributes from other features [4].
+
+Demographic parity:
+
+The first definition—demographic (or statistical) parity—
+can be thought of as a stronger version of the US Equal
+Employment Opportunity Commission’s “four-fifths rule,”
+requires that the “selection rate for any race, sex, or
+ethnic group [must be at least] four-fifths (4/5) (or eighty
+percent) of the rate for the group with the highest rate
+http://workpsychcentral.com/index.php/4-5ths-rule
+
+How women won the fight for equal prize money at Wimbledon
+https://www.weforum.org/agenda/2017/07/wimbledon-women-equal-prize-money/
+
+Ricci v. DeStefano, case alleging racial discrimination that was decided by the U.S. Supreme Court on June 29, 2009. The court’s decision, which agreed that the plaintiffs were unfairly kept from job promotions because of their race, was expected to have widespread ramifications for affirmative action and civil rights law.
+The case arose after the New Haven, Conn., fire department offered a promotional examination to its firefighters in 2003. Seventy-seven firefighters took the exam, but none of the 19 African Americans among them earned results deemed high enough to warrant a promotion.
+The man at the centre of the lawsuit was Frank Ricci, a white firefighter who testified that he had studied for several hours a day and had paid a friend to record textbooks onto tape for him so that he could overcome his dyslexia in order to do well on the test. New Haven’s mayor, John DeStefano, was named as one of the respondents in the lawsuit. Attorneys for the city of New Haven argued that it was unfair to perceive the department’s action as racial discrimination because they were trying to comply with Title VII of the Civil Rights Act (1964), which bans discriminatory practices by employers.
+https://www.britannica.com/event/Ricci-v-DeStefano
+
+
+Demographic parity/ (statistical) parity:
+
+if the results of a model's classification are not dependent on a given sensitive attribute.
+	- P[h(X) = y'| A=a, Y=y] = P[h(X) = y| Y=y] voor alle a, y, y'
+	- P[h(X)| A=a, Y=y] = P[h(X) = y| Y=y] voor alle a, y
+
+notation of
+Agarwal, Beygelzimer, Dudik, Langford, Wallach “A Reductions Approach to Fair Classification”, ICML, 2018.
+
+h function x
+y werkelijke waarde
+y' voorspelde waarde
+a protected attribute
+
+---
+Corresponding metrics:
+
+selection_rate:
+The fraction of predicted labels matching the ‘good’ outcome if 1 is the 'good' outcome
+E[h(x)| A=a]
+
+demographic_parity_difference:
+The difference between the largest and the smallest group-level selection rate across all a of the sensitive feature.
+
+demographic_parity_ratio:
+The ratio between the smallest and the largest group-level selection rate, 𝐸[ℎ(𝑋)|𝐴=𝑎], across all values 𝑎 of the sensitive feature.
+The demographic parity ratio of 1 means that all groups have the same selection rate.
+
+
+------
+
+"High-achieving Asian-American students are being shut out of top schools around the country. Is this what diversity looks like now?"
+http://archive.boston.com/news/education/higher/articles/2011/04/17/high_achieving_asian_americans_are_being_shut_out_of_top_schools/
+
+"Teen runners sue to block trans athletes from girls' sports"
+https://www.theguardian.com/us-news/2020/feb/13/transgender-athletes-girls-sports-high-school
+
+"Apple cofounder Steve Wozniak says Apple Card offered his wife a lower credit limit"
+"Wozniak’s comments came after a Twitter thread went viral on Thursday accusing Apple’s credit card of discriminating against women by giving them lower credit limits for no discernible reason."
+https://www.businessinsider.nl/apple-card-sexism-steve-wozniak-2019-11?international=true&r=US
+
+----
+
+Equalized odds:
+A fairness metric that checks if, for any particular label and attribute, a classifier predicts that label equally well for all values of that attribute.
+
+We say that a predictor Y' satisfies equalized odds with respect to
+protected attribute A and outcome Y, if Y' and A are independent conditional on Y.
+- E[y'| A=a, Y=y] = E[h(X)| Y=y] voor alle a, y, y'
+
+
+-----
+Metrics:
+
+false_negative_rate_ratio (false negative = miss rate):
+false negative: predictive positive while being negative
+The ratio between the smallest and largest of 𝑃[ℎ(𝑋)=1|𝐴=𝑎,𝑌=0], across all values 𝑎 of the sensitive feature.
+
+true_positive_rate_ratio (true positive = sensitivity, recall, or hit rate):
+true positive: predicted positive and being true
+the ratio between the smallest and largest of 𝑃[ℎ(𝑋)=1|𝐴=𝑎,𝑌=1], across all values 𝑎 of the sensitive feature.
+
+equalized_odds_difference:
+The greater of two metrics: true_positive_rate_difference and false_negative_rate_difference.
+The equalized odds difference of 0 means that all groups have the same true positive, true negative, false positive,
+and false negative rates.
+
+equalized_odds_ratio:
+The smaller of two metrics: true_positive_rate_ratio and false_negative_rate_ratio.
+The equalized odds ratio of 1 means that all groups have the same true positive, true negative, false positive, and false negative rates.
+
+-----
+
+
+
+
+
+
+
